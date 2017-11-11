@@ -1,0 +1,288 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package biblioteca;
+
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
+/**
+ *
+ * @author Diego
+ */
+public class Biblioteca {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static ArrayList libros = new ArrayList();
+    public static ArrayList personas = new ArrayList();
+    public static ArrayList prestamos = new ArrayList();
+
+    public static void main(String[] args) {
+
+        String mensaje = " *** Biblioteca *** \n Seleccione una opción \n"
+                + "1. Registro de libros \n"
+                + "2. Registro de ejemplares \n"
+                + "3. Registro de Persona \n"
+                + "4. Registro de préstamo de un ejemplar \n"
+                + "5. Devolución de un ejemplar \n"
+                + "6. Consultar Ejemplares prestados a una persona \n"
+                + "7. Consultar ejemplares disponibles por libros \n"
+                + "8. Listar prestamos \n"
+                + "9. Salir ";
+
+        while (true) {
+
+            String opcion = JOptionPane.showInputDialog(mensaje);
+            if (opcion == null) {
+                break;
+                //Salir desde el menu principal
+            }
+            switch (opcion) {
+                case "1":
+                    registrarNuevoLibro();
+                    break;
+                case "2":
+                    registrarEjemplar();
+                    break;
+                case "3":
+                    registrarPersona();
+                    break;
+                case "4":
+                    registrarPrestamoEjemplar();
+                    break;
+                case "5":
+                    devolucionPrestamoEjemplar();
+                       break;
+                case "6":
+                    consultarEjemplaresPersonas();
+                    break;
+                case "7":
+                    ejeplaresDisponiblesPorLibros();
+                    break;
+                case "8":
+                    listarPrestamos();
+                    break;
+
+                default:
+                    JOptionPane.showMessageDialog(null, "Ingrese una opción válida para continuar");
+
+            }
+
+        }
+
+    }
+
+    private static void registrarNuevoLibro() {
+
+        //"Registro de un nuevo Libro
+        String titulo = JOptionPane.showInputDialog("Ingrese Titulo");
+        if (titulo != null) {
+            String autor = JOptionPane.showInputDialog("Ingrese Autor");
+            if (autor != null) {
+
+                String anioText = JOptionPane.showInputDialog("Ingrese Año");
+
+                if (anioText != null) {
+                    int dni = Integer.parseInt(anioText);
+
+                    Libro nuevoLibro = new Libro(autor, titulo, dni);
+                    
+                    //Almaceno el cliente en mi lista de clientes 
+                    libros.add(nuevoLibro);
+
+                    JOptionPane.showMessageDialog(null, "Nuevo Libro Registrado Correctamente " + nuevoLibro.titulo);
+                }
+
+            }
+        }
+
+    }
+
+    private static void registrarEjemplar() {
+
+        String mensajeLibroElegido = "Seleccione Libro a para registrar ejemplares";
+
+        for (int i = 0; i < libros.size(); i++) {
+            Libro libro_i = (Libro) libros.get(i);
+            mensajeLibroElegido += " \n Opción: " + i + " - " + libro_i.titulo;
+        }
+
+        String opcionLibroEjemplar = JOptionPane.showInputDialog(mensajeLibroElegido);
+
+        if (opcionLibroEjemplar != null) {
+            int opcionCV = Integer.parseInt(opcionLibroEjemplar);
+            if (opcionCV >= 0 && opcionCV < libros.size()) {
+                Libro lelegido = (Libro) libros.get(opcionCV);
+                String cantidadLibrosText = JOptionPane.showInputDialog("Ingrese la cantidad de ejemplares a agregar");
+                if (cantidadLibrosText != null) {
+                    int cantidad = Integer.parseInt(cantidadLibrosText);
+                    boolean agregados = lelegido.agregarEjemplares(cantidad);
+                    if (agregados) {
+                        JOptionPane.showMessageDialog(null, "Se agregaron correctamente " + cantidad + " de ejemplares nuevos");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "No se agregaron ejemplares nuevos. Verifique los datos ingresados");
+                    }
+                }
+            }
+        }
+    }
+
+    private static void registrarPersona() {
+
+        String apellido = JOptionPane.showInputDialog("Ingrese apellido");
+        if (apellido != null) {
+            String nombre = JOptionPane.showInputDialog("Ingrese nombre");
+            if (nombre != null) {
+                String dniText = JOptionPane.showInputDialog("Ingrese número de documento");
+                if (dniText != null) {
+                    int dni = Integer.parseInt(dniText);
+                    Persona nuevaPersona = new Persona(nombre, apellido, dni);
+                    //Almaceno el cliente en mi lista de personas 
+                    personas.add(nuevaPersona);
+                    JOptionPane.showMessageDialog(null, "Nueva Persona Registrada Correctamente " + nuevaPersona.apellido);
+                }
+
+            }
+        }
+    }
+
+    private static void registrarPrestamoEjemplar() {
+
+        String mensajeLibroElegido = "Seleccione Libro a para registrar Prestamo";
+
+        for (int i = 0; i < libros.size(); i++) {
+            Libro libro_i = (Libro) libros.get(i);
+            mensajeLibroElegido += " \n Opción: " + i + " - " + libro_i.titulo + ". Ejemplares diponibles " + libro_i.cantidadEjemplaresDisponibles();
+        }
+
+        String opcionLibroEjemplar = JOptionPane.showInputDialog(mensajeLibroElegido);
+
+        if (opcionLibroEjemplar != null) {
+            int opcionCV = Integer.parseInt(opcionLibroEjemplar);
+            if (opcionCV >= 0 && opcionCV < libros.size()) {
+                Libro lelegido = (Libro) libros.get(opcionCV);
+
+                if (lelegido.tieneEjemplaresDisponibles()) {
+                    Ejemplar ejemplar = lelegido.obtenerEjemplarDisponibe();
+                    String mensajePersonaElegida = "Seleccione Persona a para registrar Prestamo";
+
+                    for (int i = 0; i < personas.size(); i++) {
+                        Persona presona_i = (Persona) personas.get(i);
+                        mensajePersonaElegida += " \n Opción: " + i + " - " + presona_i.apellido + ". Ejemplares diponibles ";
+                    }
+
+                    String opcionPersonaElegida = JOptionPane.showInputDialog(mensajePersonaElegida);
+                    if (opcionPersonaElegida != null) {
+                        int opcionP = Integer.parseInt(opcionPersonaElegida);
+                        if (opcionP >= 0 && opcionP < personas.size()) {
+                            Persona pelegida = (Persona) personas.get(opcionP);
+                            Prestamo p = new Prestamo(pelegida, ejemplar);
+                            p.registrarPrestamo();
+                            prestamos.add(p);
+                            JOptionPane.showMessageDialog(null, "Prestamo Registrado Correctamente");
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Seleccione una persona correcta");
+                        }
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "El libro ingresado no tiene ejemplares disponibles");
+                }
+
+            }
+        }
+
+    }
+
+    private static void devolucionPrestamoEjemplar() {
+        String mensajePrestamoElegido = "Seleccione Prestamo";
+
+        //Para mostrar solo los prestamos vigentes creo una nueva lista asi no tengo problemas con las opciones
+        ArrayList prestamosVigentes = new ArrayList();
+
+        for (int i = 0; i < prestamos.size(); i++) {
+            Prestamo prestamo_i = (Prestamo) prestamos.get(i);
+            if (!prestamo_i.devuelto()) {
+                prestamosVigentes.add(prestamo_i);
+                mensajePrestamoElegido += " \n Opción: " + (prestamosVigentes.size() - 1) + " - " + prestamo_i;
+            }
+        }
+
+        String opcionPrestamo = JOptionPane.showInputDialog(mensajePrestamoElegido);
+
+        if (opcionPrestamo != null) {
+            int opcionCV = Integer.parseInt(opcionPrestamo);
+            if (opcionCV >= 0 && opcionCV < prestamosVigentes.size()) {
+                Prestamo ps = (Prestamo) prestamosVigentes.get(opcionCV);
+                ps.registrarDevolucion();
+                JOptionPane.showMessageDialog(null,"Se devolvió correctamente el prestamos " + ps);
+            } else {
+                JOptionPane.showMessageDialog(null, "Prestamo ingresado incorrecto");
+            }
+        }
+    }
+
+    private static void consultarEjemplaresPersonas() {
+        String mensajePersonaElegida = "Seleccione Persona a para consultar sus prestamos";
+
+        for (int i = 0; i < personas.size(); i++) {
+            Persona presona_i = (Persona) personas.get(i);
+            mensajePersonaElegida += " \n Opción: " + i + " - " + presona_i.apellido + ". Ejemplares diponibles ";
+        }
+
+        String opcionPersonaElegida = JOptionPane.showInputDialog(mensajePersonaElegida);
+        if (opcionPersonaElegida != null) {
+            int opcionP = Integer.parseInt(opcionPersonaElegida);
+            if (opcionP >= 0 && opcionP < personas.size()) {
+                Persona pelegida = (Persona) personas.get(opcionP);
+                String listaPrestamosText = "";
+                for (int i = 0; i < prestamos.size(); i++) {
+                    Prestamo p_i = (Prestamo) prestamos.get(i);
+                    //Prestamo de la persona elegida
+                    if (p_i.persona.equals(pelegida)) {
+                        listaPrestamosText += "\n " + p_i;
+                    }
+                }
+                if (listaPrestamosText.equals("")) {
+                    JOptionPane.showMessageDialog(null, "No hay prestamos registrados para la persona ingresada");
+
+                } else {
+                    JOptionPane.showMessageDialog(null, listaPrestamosText);
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Persona ingresada incorrecta");
+            }
+        }
+    }
+
+    private static void ejeplaresDisponiblesPorLibros() {
+        String mensajeLibroElegido = "Ejemplares Disponible por libro";
+
+        for (int i = 0; i < libros.size(); i++) {
+            Libro libro_i = (Libro) libros.get(i);
+            mensajeLibroElegido += " \n Libro: " + libro_i.titulo + ". Ejemplares diponibles " + libro_i.cantidadEjemplaresDisponibles();
+        }
+
+        JOptionPane.showMessageDialog(null, mensajeLibroElegido);
+    }
+
+    private static void listarPrestamos() {
+        String mensajePrestamoElegido = ":::Prestamos:::";
+        if (prestamos.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "No se han registrado prestamos");
+        } else {
+            for (int i = 0; i < prestamos.size(); i++) {
+                Prestamo prestamo_i = (Prestamo) prestamos.get(i);
+                mensajePrestamoElegido += " \n Prestamo: " + " - " + prestamo_i;
+            }
+
+            JOptionPane.showMessageDialog(null, mensajePrestamoElegido);
+        }
+
+    }
+
+}
