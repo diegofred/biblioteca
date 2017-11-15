@@ -5,6 +5,7 @@
  */
 package biblioteca;
 
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -13,15 +14,18 @@ import java.util.Date;
  */
 public class Prestamo {
 
-    public Date fechaPrestamo;
+public Date fechaPrestamo;
     public Date fechaDevolucion;
+    public Date fechaLimiteDevolucion;
     public Persona persona;
     public Ejemplar ejemplar;
 
     public Prestamo(Persona persona, Ejemplar ejemplar) {
         this.persona = persona;
         this.ejemplar = ejemplar;
-
+        this.fechaPrestamo = new Date();
+        this.fechaLimiteDevolucion = agregarDias(this.fechaPrestamo, 15);
+       
     }
 
     public Prestamo() {
@@ -41,9 +45,16 @@ public class Prestamo {
         return this.fechaDevolucion != null;
     }
 
-    @Override
+      @Override
     public String toString() {
-        return "Prestamo{" + "fechaPrestamo= " + fechaPrestamo + ", fechaDevolucion= " + (fechaDevolucion != null ? fechaDevolucion : " Sin Devolucion") + ", persona=" + persona.getApellido() + ", ejemplar=" + ejemplar.numeroEjemplar + '}';
+        return "Prestamo{" + "fechaPrestamo= " + fechaPrestamo + " Fecha Limite Devolucion= "+ this.fechaLimiteDevolucion + ", fechaDevolucion= " + ( fechaDevolucion != null ? fechaDevolucion :" Sin Devolucion") + ", persona=" + persona.getApellido() + ", ejemplar=" + ejemplar.numeroEjemplar + '}';
+    }
+    
+        public Date agregarDias (Date fecha, int dias){
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(fecha);
+        calendar.add(Calendar.DAY_OF_YEAR, dias);
+        return calendar.getTime();
     }
 
 }
