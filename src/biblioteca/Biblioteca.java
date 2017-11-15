@@ -63,7 +63,7 @@ public class Biblioteca {
                     break;
                 case "5":
                     devolucionPrestamoEjemplar();
-                       break;
+                    break;
                 case "6":
                     consultarEjemplaresPersonas();
                     break;
@@ -72,6 +72,11 @@ public class Biblioteca {
                     break;
                 case "8":
                     listarPrestamos();
+                    break;
+                case "9":
+                    JOptionPane.showMessageDialog(null, "Gracias por utilizar la aplicación");
+
+                    System.exit(0);
                     break;
 
                 default:
@@ -168,7 +173,7 @@ public class Biblioteca {
                     Persona nuevaPersona = new Persona(nombre, apellido, dni);
                     //Almaceno el cliente en mi lista de personas 
                     personas.add(nuevaPersona);
-                    JOptionPane.showMessageDialog(null, "Nueva Persona Registrada Correctamente " + nuevaPersona.apellido);
+                    JOptionPane.showMessageDialog(null, "Nueva Persona Registrada Correctamente " + nuevaPersona.getApellido());
                 }
 
             }
@@ -197,7 +202,7 @@ public class Biblioteca {
 
                     for (int i = 0; i < personas.size(); i++) {
                         Persona presona_i = (Persona) personas.get(i);
-                        mensajePersonaElegida += " \n Opción: " + i + " - " + presona_i.apellido + ". Ejemplares diponibles ";
+                        mensajePersonaElegida += " \n Opción: " + i + " - " + presona_i.getApellido() + ". Ejemplares diponibles ";
                     }
 
                     String opcionPersonaElegida = JOptionPane.showInputDialog(mensajePersonaElegida);
@@ -243,7 +248,7 @@ public class Biblioteca {
             if (opcionCV >= 0 && opcionCV < prestamosVigentes.size()) {
                 Prestamo ps = (Prestamo) prestamosVigentes.get(opcionCV);
                 ps.registrarDevolucion();
-                JOptionPane.showMessageDialog(null,"Se devolvió correctamente el prestamos " + ps);
+                JOptionPane.showMessageDialog(null, "Se devolvió correctamente el prestamos " + ps);
             } else {
                 JOptionPane.showMessageDialog(null, "Prestamo ingresado incorrecto");
             }
@@ -255,7 +260,7 @@ public class Biblioteca {
 
         for (int i = 0; i < personas.size(); i++) {
             Persona presona_i = (Persona) personas.get(i);
-            mensajePersonaElegida += " \n Opción: " + i + " - " + presona_i.apellido + ". Ejemplares diponibles ";
+            mensajePersonaElegida += " \n Opción: " + i + " - " + presona_i.getApellido() + ". Ejemplares diponibles ";
         }
 
         String opcionPersonaElegida = JOptionPane.showInputDialog(mensajePersonaElegida);
@@ -296,6 +301,7 @@ public class Biblioteca {
     }
 
     private static void listarPrestamos() {
+
         String mensajePrestamoElegido = ":::Prestamos:::";
         if (prestamos.isEmpty()) {
             JOptionPane.showMessageDialog(null, "No se han registrado prestamos");
