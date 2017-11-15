@@ -20,9 +20,16 @@ public class Biblioteca {
     public static ArrayList libros = new ArrayList();
     public static ArrayList personas = new ArrayList();
     public static ArrayList prestamos = new ArrayList();
-
+    public static ArrayList tiposLibro = new ArrayList();
+    public static TipoLibro t1 = new TipoLibro("fantasia", "libro de fantasia");
+    public static TipoLibro t2 = new TipoLibro("romance", "libro de romance");
+    public static TipoLibro t3 = new TipoLibro("terror", "libro de terror");
+    
     public static void main(String[] args) {
-
+        tiposLibro.add(t1);
+        tiposLibro.add(t2);
+        tiposLibro.add(t3);
+        
         String mensaje = " *** Biblioteca *** \n Seleccione una opción \n"
                 + "1. Registro de libros \n"
                 + "2. Registro de ejemplares \n"
@@ -87,9 +94,27 @@ public class Biblioteca {
                 String anioText = JOptionPane.showInputDialog("Ingrese Año");
 
                 if (anioText != null) {
-                    int dni = Integer.parseInt(anioText);
+                    int anio = Integer.parseInt(anioText);
+                    
+                     String opcLibroElegido = "Seleccione Tipo de Libro";
 
-                    Libro nuevoLibro = new Libro(autor, titulo, dni);
+        for (int i = 0; i < tiposLibro.size(); i++) {
+            TipoLibro tipoAux = (TipoLibro) tiposLibro.get(i);
+            opcLibroElegido += " \n Opción: " + i + " - " + tipoAux.getNombre();
+           
+            
+        }
+
+        String textoLibroElegido = JOptionPane.showInputDialog(opcLibroElegido);
+        int idLibroElegido = Integer.parseInt(textoLibroElegido);
+         TipoLibro tl = (TipoLibro) tiposLibro.get(idLibroElegido);
+         
+        
+        
+                    Libro nuevoLibro = new Libro(autor, titulo, anio, tl);
+                    
+                   
+                    
                     
                     //Almaceno el cliente en mi lista de clientes 
                     libros.add(nuevoLibro);
