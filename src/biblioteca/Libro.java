@@ -43,7 +43,7 @@ public class Libro {
     }
 
     /**
-     * 
+     *
      * @return verdadero si existe al menos un ejemplar disponible
      */
     public boolean tieneEjemplaresDisponibles() {
@@ -51,8 +51,9 @@ public class Libro {
     }
 
     /**
-     * 
-     * @return un Ejemplar para efectuar un prestamo. Sino hay disponibles devuelve null
+     *
+     * @return un Ejemplar para efectuar un prestamo. Sino hay disponibles
+     * devuelve null
      */
     public Ejemplar obtenerEjemplarDisponibe() {
         //Sino hay ejemplares disponibles retorno la referencia a null
@@ -65,30 +66,31 @@ public class Libro {
                     break;
                 }
             }
-        } 
+        }
         return proximoEjemplarDisponible;
-        
+
     }
-    
-/**
- * 
- * @param cantidad de nuevos ejemplares a agregar del libro
- * @return boolean que especifica si se agregaron o no los ejemplares
- */
-    public boolean agregarEjemplares (int cantidad){
+
+    /**
+     *
+     * @param cantidad de nuevos ejemplares a agregar del libro
+     * @return boolean que especifica si se agregaron o no los ejemplares
+     */
+    public boolean agregarEjemplares(int cantidad) {
         if (cantidad > 0) {
-           for (int i = 0; i < cantidad; i++) {
-             ejemplares.add(new Ejemplar());
-           }
-           return true;
-        }else{
+            for (int i = 0; i < cantidad; i++) {
+                ejemplares.add(new Ejemplar());
+            }
+            return true;
+        } else {
             //Cantidad de ejemplares incorrecta
             return false;
         }
     }
-    
-    
-    
-    
-    
+
+    @Override
+    public String toString() {
+        return "La clase Libro contiene: \n" + "Autor: " + autor + "\nTitulo: " + titulo + "\nEjemplares: " + ejemplares;
+    }
+
 }
