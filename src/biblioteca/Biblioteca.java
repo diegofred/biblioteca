@@ -56,7 +56,9 @@ public class Biblioteca {
                     registrarEjemplar();
                     break;
                 case "3":
-                    registrarPersona();
+                    // registrarPersona();
+                    AltaPersona ap = new AltaPersona(null, true);
+                    ap.setVisible(true);
                     break;
                 case "4":
                     registrarPrestamoEjemplar();
