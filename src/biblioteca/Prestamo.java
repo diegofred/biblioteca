@@ -7,7 +7,7 @@ package biblioteca;
 
 import java.util.Calendar;
 import java.util.Date;
-
+import java.util.Calendar;
 /**
  *
  * @author Diego
@@ -50,11 +50,11 @@ public Date fechaPrestamo;
         return "Prestamo{" + "fechaPrestamo= " + fechaPrestamo + " Fecha Limite Devolucion= "+ this.fechaLimiteDevolucion + ", fechaDevolucion= " + ( fechaDevolucion != null ? fechaDevolucion :" Sin Devolucion") + ", persona=" + persona.getApellido() + ", ejemplar=" + ejemplar.numeroEjemplar + '}';
     }
     
-        public Date agregarDias (Date fecha, int dias){
+    public Date agregarDias (Date fecha, int dias){
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(fecha);
         calendar.add(Calendar.DAY_OF_YEAR, dias);
         return calendar.getTime();
     }
-
+    
 }
