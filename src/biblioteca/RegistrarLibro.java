@@ -196,7 +196,7 @@ public class RegistrarLibro extends javax.swing.JDialog {
             Libro l1 = new Libro(autor, titulo, anio, tipos);
 
             //Guardar la persona
-            JOptionPane.showMessageDialog(null, "Libro creado " + l1);
+            JOptionPane.showMessageDialog(null, "Libro creado " + l1.toString());
 
             this.setVisible(false);
             this.dispose();
