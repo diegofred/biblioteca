@@ -80,7 +80,9 @@ public class Biblioteca {
 //                    registrarPrestamoEjemplar();
                     break;
                 case "5":
-                    devolucionPrestamoEjemplar();
+                    //devolucionPrestamoEjemplar();
+                    DevolucionEjemplar de = new DevolucionEjemplar(null, true);
+                    de.setVisible(true);
                     break;
                 case "6":
                     consultarEjemplaresPersonas();
