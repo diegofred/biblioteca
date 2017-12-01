@@ -7,6 +7,7 @@ package biblioteca;
 
 import static biblioteca.Biblioteca.prestamos;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -14,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
  * @author Porres
  */
 public class DevolucionEjemplar extends javax.swing.JDialog {
-
+    private ArrayList prestamosVigentes ;
     /**
      * Creates new form DevolucionEjemplar
      */
@@ -22,9 +23,10 @@ public class DevolucionEjemplar extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
        prepararInterfaz();
+        setLocationRelativeTo(this);
     }
    private void prepararInterfaz() {
-       ArrayList prestamosVigentes = new ArrayList();
+      prestamosVigentes = new ArrayList();
 
         for (int i = 0; i < prestamos.size(); i++) {
             Prestamo prestamo_i = (Prestamo) prestamos.get(i);
@@ -50,6 +52,7 @@ public class DevolucionEjemplar extends javax.swing.JDialog {
            
        }
 
+       
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -66,7 +69,6 @@ public class DevolucionEjemplar extends javax.swing.JDialog {
         jScrollPane1 = new javax.swing.JScrollPane();
         tbxDevoluciones = new javax.swing.JTable();
         btnDevolver = new javax.swing.JButton();
-        btnCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -102,8 +104,11 @@ public class DevolucionEjemplar extends javax.swing.JDialog {
         jScrollPane1.setViewportView(tbxDevoluciones);
 
         btnDevolver.setText("Devolver");
-
-        btnCancelar.setText("Cancelar");
+        btnDevolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDevolverActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -126,8 +131,6 @@ public class DevolucionEjemplar extends javax.swing.JDialog {
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnCancelar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnDevolver)
                 .addGap(19, 19, 19))
         );
@@ -141,14 +144,30 @@ public class DevolucionEjemplar extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnDevolver)
-                    .addComponent(btnCancelar))
+                .addComponent(btnDevolver)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnDevolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDevolverActionPerformed
+     
+
+      int filaSeleccionada =  tbxDevoluciones.getSelectedRow();
+        if (filaSeleccionada >= 0) {
+            Prestamo p = (Prestamo) prestamosVigentes.get(filaSeleccionada);
+            p.registrarDevolucion();
+           JOptionPane.showMessageDialog(null,"El libro ha sido devuelto");
+           this.setVisible(false);
+           this.dispose();
+           
+        }else{
+            JOptionPane.showMessageDialog(null, "Debe seleccionar una fila de la lista");
+        }
+        
+        
+    }//GEN-LAST:event_btnDevolverActionPerformed
 
     /**
      * @param args the command line arguments
@@ -193,7 +212,6 @@ public class DevolucionEjemplar extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnDevolver;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblListaPrestamos;
