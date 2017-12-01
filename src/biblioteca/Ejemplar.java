@@ -14,7 +14,7 @@ public class Ejemplar {
     public static int siguienteNumeroEjemplar;
     
     public int numeroEjemplar;
-    public boolean disponible;
+    public boolean disponible;          
     
     
     
@@ -26,6 +26,6 @@ public class Ejemplar {
         this.numeroEjemplar = siguienteNumeroEjemplar++;
         this.disponible = true;
     }
-    
+
     
 }

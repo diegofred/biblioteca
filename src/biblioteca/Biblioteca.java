@@ -53,12 +53,15 @@ public class Biblioteca {
                     registrarNuevoLibro();
                     break;
                 case "2":
-                    registrarEjemplar();
+                    //registrarEjemplar();
+                    InterfazdeEjemplares E = new InterfazdeEjemplares(null, true);
+                    E.setVisible(true);
                     break;
                 case "3":
                     // registrarPersona();
                     AltaPersona ap = new AltaPersona(null, true);
                     ap.setVisible(true);
+                    
                     break;
                 case "4":
                     registrarPrestamoEjemplar();
