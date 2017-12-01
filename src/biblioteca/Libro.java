@@ -57,6 +57,7 @@ public class Libro {
      */
     public boolean tieneEjemplaresDisponibles() {
         return cantidadEjemplaresDisponibles() > 0;
+
     }
 
     /**

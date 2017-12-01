@@ -93,7 +93,10 @@ public class Biblioteca {
                     ejeplaresDisponiblesPorLibros();
                     break;
                 case "8":
-                    listarPrestamos();
+                    //listarPrestamos();
+                    
+                    ListadoPrestamos list = new ListadoPrestamos(null, true);
+                    list.setVisible(true);
                     break;
                 case "9":
                     GUITipoLibro tp = new GUITipoLibro(null, true);
