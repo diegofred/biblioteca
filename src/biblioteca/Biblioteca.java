@@ -24,12 +24,12 @@ public class Biblioteca {
     public static TipoLibro t1 = new TipoLibro("fantasia", "libro de fantasia");
     public static TipoLibro t2 = new TipoLibro("romance", "libro de romance");
     public static TipoLibro t3 = new TipoLibro("terror", "libro de terror");
-    
+
     public static void main(String[] args) {
         tiposLibro.add(t1);
         tiposLibro.add(t2);
         tiposLibro.add(t3);
-        
+
         String mensaje = " *** Biblioteca *** \n Seleccione una opción \n"
                 + "1. Registro de libros \n"
                 + "2. Registro de ejemplares \n"
@@ -50,7 +50,10 @@ public class Biblioteca {
             }
             switch (opcion) {
                 case "1":
-                    registrarNuevoLibro();
+
+                    //registrarNuevoLibro();
+                    RegistrarLibro registerBook = new RegistrarLibro(null, true);
+                    registerBook.setVisible(true);
                     break;
                 case "2":
                     registrarEjemplar();
@@ -102,27 +105,21 @@ public class Biblioteca {
 
                 if (anioText != null) {
                     int anio = Integer.parseInt(anioText);
-                    
-                     String opcLibroElegido = "Seleccione Tipo de Libro";
 
-        for (int i = 0; i < tiposLibro.size(); i++) {
-            TipoLibro tipoAux = (TipoLibro) tiposLibro.get(i);
-            opcLibroElegido += " \n Opción: " + i + " - " + tipoAux.getNombre();
-           
-            
-        }
+                    String opcLibroElegido = "Seleccione Tipo de Libro";
 
-        String textoLibroElegido = JOptionPane.showInputDialog(opcLibroElegido);
-        int idLibroElegido = Integer.parseInt(textoLibroElegido);
-         TipoLibro tl = (TipoLibro) tiposLibro.get(idLibroElegido);
-         
-        
-        
+                    for (int i = 0; i < tiposLibro.size(); i++) {
+                        TipoLibro tipoAux = (TipoLibro) tiposLibro.get(i);
+                        opcLibroElegido += " \n Opción: " + i + " - " + tipoAux.getNombre();
+
+                    }
+
+                    String textoLibroElegido = JOptionPane.showInputDialog(opcLibroElegido);
+                    int idLibroElegido = Integer.parseInt(textoLibroElegido);
+                    TipoLibro tl = (TipoLibro) tiposLibro.get(idLibroElegido);
+
                     Libro nuevoLibro = new Libro(autor, titulo, anio, tl);
-                    
-                   
-                    
-                    
+
                     //Almaceno el cliente en mi lista de clientes 
                     libros.add(nuevoLibro);
 

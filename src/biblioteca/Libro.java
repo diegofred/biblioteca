@@ -16,20 +16,18 @@ public class Libro {
     public String autor;
     public String titulo;
     public int anio;
-    
-    public TipoLibro tipolibro ;
-    
+
+    public TipoLibro tipolibro;
+
     public ArrayList ejemplares = new ArrayList();
-    
-    
 
     public Libro(String autor, String titulo, int anio) {
         this.autor = autor;
         this.titulo = titulo;
         this.anio = anio;
     }
-    
-        public Libro(String autor, String titulo, int anio, TipoLibro tipoLibro) {
+
+    public Libro(String autor, String titulo, int anio, TipoLibro tipoLibro) {
         this.autor = autor;
         this.titulo = titulo;
         this.anio = anio;
