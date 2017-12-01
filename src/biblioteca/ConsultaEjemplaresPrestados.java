@@ -133,7 +133,7 @@ public class ConsultaEjemplaresPrestados extends javax.swing.JDialog {
 
             for (int i = 0; i < cantidadprestamos; i++) {
                 Prestamo p = (Prestamo) Biblioteca.prestamos.get(i);
-                Object[] fila = new Object[cantidadColumnas];
+                 Object[] fila = new Object[cantidadColumnas];
                 //Estas filas deberian concidir en orden con las declaras en la tabla
                 fila[0] = p.ejemplar.numeroEjemplar;
                 //fila[1] =  p.ejemplar.libro.titulo;
