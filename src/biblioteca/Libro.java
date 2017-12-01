@@ -97,14 +97,14 @@ public class Libro {
             return false;
         }
     }
-    
-    private int contarEjemplares(){
+
+    private int contarEjemplares() {
         return ejemplares.size();
     }
 
     @Override
     public String toString() {
-        return "La clase Libro contiene: \n" + "Autor: " + autor + "\nTitulo: " + titulo +"\nEjemplares: "+ contarEjemplares() ;
+        return "La clase Libro contiene: \n" + "Autor: " + autor + "\nTitulo: " + titulo + "\nEjemplares: " + contarEjemplares();
     }
 
 }

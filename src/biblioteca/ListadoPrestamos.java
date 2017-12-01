@@ -41,8 +41,8 @@ public class ListadoPrestamos extends javax.swing.JDialog {
             fila[1] = l.titulo;
             fila[2] = p.ejemplar.numeroEjemplar;
             fila[3] = p.fechaPrestamo;
-            fila[2] = p.fechaDevolucion;
-            fila[3] = p.fechaLimiteDevolucion;
+            fila[4] = p.fechaLimiteDevolucion;
+            fila[5] = p.fechaLimiteDevolucion;
 
             tm.addRow(fila);
         }
@@ -70,10 +70,7 @@ public class ListadoPrestamos extends javax.swing.JDialog {
 
         tblListadoPrestamos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String [] {
                 "Apellido y Nombre", "Titulo", "Ejemplar", "Fecha de prestamo", "Fecha de devolucion", "Fecha limite"

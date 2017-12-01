@@ -71,7 +71,7 @@ public class Biblioteca {
                     // registrarPersona();
                     AltaPersona ap = new AltaPersona(null, true);
                     ap.setVisible(true);
-                    
+
                     break;
                 case "4":
                     GuiPrestamo p = new GuiPrestamo(null, true);
@@ -94,14 +94,14 @@ public class Biblioteca {
                     break;
                 case "8":
                     //listarPrestamos();
-                    
+
                     ListadoPrestamos list = new ListadoPrestamos(null, true);
                     list.setVisible(true);
                     break;
                 case "9":
                     GUITipoLibro tp = new GUITipoLibro(null, true);
                     tp.setVisible(true);
-                    break;    
+                    break;
                 case "10":
                     JOptionPane.showMessageDialog(null, "Gracias por utilizar la aplicación");
 
@@ -249,7 +249,6 @@ public class Biblioteca {
 //        }
 //
 //    }
-
     private static void devolucionPrestamoEjemplar() {
         String mensajePrestamoElegido = "Seleccione Prestamo";
 
