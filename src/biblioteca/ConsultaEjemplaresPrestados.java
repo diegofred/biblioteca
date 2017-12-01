@@ -122,7 +122,9 @@ public class ConsultaEjemplaresPrestados extends javax.swing.JDialog {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         int PersonaSeleccionada = cbx_Personas.getSelectedIndex();
+     //   System.out.println("Ingreso al actualizar tabla");
         if (PersonaSeleccionada >= 0) {
+         //    System.out.println("Persona OK");
             Persona p2 = (Persona) Biblioteca.personas.get(PersonaSeleccionada);
 
             DefaultTableModel tm = (DefaultTableModel) tbx_Prestamos.getModel();
@@ -130,21 +132,17 @@ public class ConsultaEjemplaresPrestados extends javax.swing.JDialog {
             //actual data for the table in a 2d array
             int cantidadprestamos = Biblioteca.prestamos.size();
             int cantidadColumnas = tm.getColumnCount();
-
+           // System.out.println("Cantidad de prestamos " + cantidadprestamos);
             for (int i = 0; i < cantidadprestamos; i++) {
                 Prestamo p = (Prestamo) Biblioteca.prestamos.get(i);
                  Object[] fila = new Object[cantidadColumnas];
                 //Estas filas deberian concidir en orden con las declaras en la tabla
                 fila[0] = p.ejemplar.numeroEjemplar;
-                //fila[1] =  p.ejemplar.libro.titulo;
-                //fila[2] = p.nacionalidad.nombre;
-                fila[3] = 1;
+                fila[1] =  p.ejemplar.libro.titulo;
+                fila[2] = p.ejemplar.libro.anio;
+                fila[3] = p.ejemplar.libro.autor;
                 tm.addRow(fila);
             }
-
-            this.setVisible(false);
-            this.dispose();
-
         } else {
             JOptionPane.showMessageDialog(null, "Debe Seleccionar Una Persona Valida");
         }
