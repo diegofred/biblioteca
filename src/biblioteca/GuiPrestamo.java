@@ -42,7 +42,7 @@ public class GuiPrestamo extends javax.swing.JDialog {
             Persona personaNueva = (Persona) Biblioteca.personas.get(i);
             cb_persona.addItem(personaNueva.getNombre() + " " + personaNueva.getApellido());
         }
-        setVisible(true);
+
     }
 
     /**
@@ -54,33 +54,32 @@ public class GuiPrestamo extends javax.swing.JDialog {
 
     private void registrarPrestamoEjemplar() {
 
-       int opcionLibroEjemplar = cb_libro.getSelectedIndex();
+        int opcionLibroEjemplar = cb_libro.getSelectedIndex();
 
-            if (opcionLibroEjemplar >= 0 && opcionLibroEjemplar < libros.size()) {
-                Libro lelegido = (Libro) libros.get(opcionLibroEjemplar);
+        if (opcionLibroEjemplar >= 0 && opcionLibroEjemplar < libros.size()) {
+            Libro lelegido = (Libro) libros.get(opcionLibroEjemplar);
 
-                if (lelegido.tieneEjemplaresDisponibles()) {
-                    Ejemplar ejemplar = lelegido.obtenerEjemplarDisponibe();
-                    
-                    //Persona selecciopnada con el cbx
-                    
-                    int opcionPersonaElegida = cb_persona.getSelectedIndex();
+            if (lelegido.tieneEjemplaresDisponibles()) {
+                Ejemplar ejemplar = lelegido.obtenerEjemplarDisponibe();
 
-                        if (opcionPersonaElegida >= 0 && opcionPersonaElegida < personas.size()) {
-                            Persona pelegida = (Persona) personas.get(opcionPersonaElegida);
-                            Prestamo p = new Prestamo(pelegida, ejemplar);
-                            p.registrarPrestamo();
-                            prestamos.add(p);
-                            JOptionPane.showMessageDialog(null, "Prestamo Registrado Correctamente");
-                        } else {
-                            JOptionPane.showMessageDialog(null, "Seleccione una persona correcta");
-                        }
-                    
+                //Persona selecciopnada con el cbx
+                int opcionPersonaElegida = cb_persona.getSelectedIndex();
+
+                if (opcionPersonaElegida >= 0 && opcionPersonaElegida < personas.size()) {
+                    Persona pelegida = (Persona) personas.get(opcionPersonaElegida);
+                    Prestamo p = new Prestamo(pelegida, ejemplar);
+                    p.registrarPrestamo();
+                    prestamos.add(p);
+                    JOptionPane.showMessageDialog(null, "Prestamo Registrado Correctamente");
                 } else {
-                    JOptionPane.showMessageDialog(null, "El libro ingresado no tiene ejemplares disponibles");
+                    JOptionPane.showMessageDialog(null, "Seleccione una persona correcta");
                 }
 
+            } else {
+                JOptionPane.showMessageDialog(null, "El libro ingresado no tiene ejemplares disponibles");
             }
+
+        }
 
     }
 

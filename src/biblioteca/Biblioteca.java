@@ -85,7 +85,9 @@ public class Biblioteca {
                     de.setVisible(true);
                     break;
                 case "6":
-                    consultarEjemplaresPersonas();
+                    //consultarEjemplaresPersonas();
+                    ConsultaEjemplaresPrestados Ce = new ConsultaEjemplaresPrestados(null, true);
+                    Ce.setVisible(true);
                     break;
                 case "7":
                     ejeplaresDisponiblesPorLibros();
