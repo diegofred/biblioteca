@@ -27,7 +27,7 @@ public class Ejemplar {
         this.disponible = true;
         this.libro = libro;
     }
-    
+
     
 //    public Libro getLibro(){
 //        for (int i = 0; i < Biblioteca.libros.size(); i++) {
