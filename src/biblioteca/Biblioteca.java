@@ -45,7 +45,8 @@ public class Biblioteca {
                 + "6. Consultar Ejemplares prestados a una persona \n"
                 + "7. Consultar ejemplares disponibles por libros \n"
                 + "8. Listar prestamos \n"
-                + "9. Salir ";
+                + "9. Agregar Tipo Libro\n"
+                + "10. Salir ";
 
         while (true) {
 
@@ -56,15 +57,21 @@ public class Biblioteca {
             }
             switch (opcion) {
                 case "1":
-                    registrarNuevoLibro();
+
+                    //registrarNuevoLibro();
+                    RegistrarLibro registerBook = new RegistrarLibro(null, true);
+                    registerBook.setVisible(true);
                     break;
                 case "2":
-                    registrarEjemplar();
+                    //registrarEjemplar();
+                    InterfazdeEjemplares E = new InterfazdeEjemplares(null, true);
+                    E.setVisible(true);
                     break;
                 case "3":
                     // registrarPersona();
                     AltaPersona ap = new AltaPersona(null, true);
                     ap.setVisible(true);
+                    
                     break;
                 case "4":
                     GuiPrestamo p = new GuiPrestamo(null, true);
@@ -85,6 +92,10 @@ public class Biblioteca {
                     listarPrestamos();
                     break;
                 case "9":
+                    GUITipoLibro tp = new GUITipoLibro(null, true);
+                    tp.setVisible(true);
+                    break;    
+                case "10":
                     JOptionPane.showMessageDialog(null, "Gracias por utilizar la aplicación");
 
                     System.exit(0);
