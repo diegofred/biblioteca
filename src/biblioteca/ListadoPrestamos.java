@@ -30,11 +30,9 @@ public class ListadoPrestamos extends javax.swing.JDialog {
         int cantidadPersonas = Biblioteca.prestamos.size();
         int cantidadColumnas = tm.getColumnCount();
 
-        Libro l = (Libro) Biblioteca.libros.get(0);
-        
         for (int i = 0; i < cantidadPersonas; i++) {
             Prestamo p = (Prestamo) Biblioteca.prestamos.get(i);
-            
+            Libro l = (Libro) Biblioteca.libros.get(i);
             Object[] fila = new Object[cantidadColumnas];
 
             String nomApellido = p.persona.getApellido() + " " + p.persona.getNombre();

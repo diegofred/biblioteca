@@ -42,9 +42,6 @@ public class RegistrarLibro extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        txtNombre = new javax.swing.JTextField();
-        lblDescripcion = new javax.swing.JLabel();
-        txtDescripcion = new javax.swing.JTextField();
         btnRegistrar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         cmbTipoLibro = new javax.swing.JComboBox<>();
@@ -56,12 +53,9 @@ public class RegistrarLibro extends javax.swing.JDialog {
         txtAnio = new javax.swing.JTextField();
         lblAnio = new javax.swing.JLabel();
         lblTipoLibro = new javax.swing.JLabel();
-        lblName = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(0, 213, 253));
-
-        lblDescripcion.setText("Descripción:");
 
         btnRegistrar.setText("Registrar");
         btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
@@ -92,8 +86,6 @@ public class RegistrarLibro extends javax.swing.JDialog {
 
         lblTipoLibro.setText("Tipo de Libro:");
 
-        lblName.setText("Nombre:");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -105,32 +97,22 @@ public class RegistrarLibro extends javax.swing.JDialog {
                         .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(91, 91, 91)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblNombre)
+                            .addComponent(lblAnio)
+                            .addComponent(lblAutor)
+                            .addComponent(lblTipoLibro))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
+                            .addComponent(txtAnio)
+                            .addComponent(txtTituloLibro)
+                            .addComponent(txtAutorLibro)
+                            .addComponent(cmbTipoLibro, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(btnCancelar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnRegistrar))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblNombre)
-                                    .addComponent(lblAnio)
-                                    .addComponent(lblAutor)
-                                    .addComponent(lblTipoLibro))
-                                .addGap(77, 77, 77)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtAnio)
-                                    .addComponent(txtTituloLibro)
-                                    .addComponent(txtAutorLibro)
-                                    .addComponent(cmbTipoLibro, 0, 72, Short.MAX_VALUE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblName)
-                                    .addComponent(lblDescripcion))
-                                .addGap(84, 84, 84)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE)
-                                    .addComponent(txtDescripcion))))))
-                .addContainerGap(97, Short.MAX_VALUE))
+                                .addComponent(btnRegistrar)))))
+                .addContainerGap(79, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -152,24 +134,13 @@ public class RegistrarLibro extends javax.swing.JDialog {
                             .addComponent(lblAnio))))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblTipoLibro)
-                        .addGap(21, 21, 21))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(cmbTipoLibro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblName)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblDescripcion)
-                    .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                    .addComponent(lblTipoLibro)
+                    .addComponent(cmbTipoLibro, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar)
                     .addComponent(btnRegistrar))
-                .addGap(20, 20, 20))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         pack();
@@ -182,10 +153,6 @@ public class RegistrarLibro extends javax.swing.JDialog {
         String autor = txtAutorLibro.getText();
 
         int anio = Integer.parseInt(txtAnio.getText());
-
-        String nombre = txtNombre.getText();
-
-        String descripcion = txtDescripcion.getText();
 
         int opcionTipoLibroSeleccioda = cmbTipoLibro.getSelectedIndex();
 
@@ -261,15 +228,11 @@ public class RegistrarLibro extends javax.swing.JDialog {
     private javax.swing.JComboBox<String> cmbTipoLibro;
     private javax.swing.JLabel lblAnio;
     private javax.swing.JLabel lblAutor;
-    private javax.swing.JLabel lblDescripcion;
-    private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblTipoLibro;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JTextField txtAnio;
     private javax.swing.JTextField txtAutorLibro;
-    private javax.swing.JTextField txtDescripcion;
-    private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtTituloLibro;
     // End of variables declaration//GEN-END:variables
 }
