@@ -1,6 +1,7 @@
 package biblioteca;
 
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class ConsultaEjemplaresPrestados extends javax.swing.JDialog {
 
@@ -14,12 +15,12 @@ public class ConsultaEjemplaresPrestados extends javax.swing.JDialog {
 
         cbx_Personas.removeAllItems();
         for (int i = 0; i < Biblioteca.personas.size(); i++) {
-            
+
             Persona P3 = (Persona) Biblioteca.personas.get(i);
-            String Pp= P3.getNombre();
+            String Pp = P3.getNombre();
             cbx_Personas.addItem(Pp);
         }
-        
+
     }
 
     @SuppressWarnings("unchecked")
@@ -46,10 +47,7 @@ public class ConsultaEjemplaresPrestados extends javax.swing.JDialog {
 
         tbx_Prestamos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Numero Ejemplar", "Titulo", "Año", "Autor"
@@ -127,6 +125,23 @@ public class ConsultaEjemplaresPrestados extends javax.swing.JDialog {
         if (PersonaSeleccionada >= 0) {
             Persona p2 = (Persona) Biblioteca.personas.get(PersonaSeleccionada);
 
+            DefaultTableModel tm = (DefaultTableModel) tbx_Prestamos.getModel();
+
+            //actual data for the table in a 2d array
+            int cantidadprestamos = Biblioteca.prestamos.size();
+            int cantidadColumnas = tm.getColumnCount();
+
+            for (int i = 0; i < cantidadprestamos; i++) {
+                Prestamo p = (Prestamo) Biblioteca.prestamos.get(i);
+                Object[] fila = new Object[cantidadColumnas];
+                //Estas filas deberian concidir en orden con las declaras en la tabla
+                fila[0] = p.ejemplar.numeroEjemplar;
+                //fila[1] =  p.ejemplar.libro.titulo;
+                //fila[2] = p.nacionalidad.nombre;
+                fila[3] = 1;
+                tm.addRow(fila);
+            }
+
             this.setVisible(false);
             this.dispose();
 
@@ -135,12 +150,11 @@ public class ConsultaEjemplaresPrestados extends javax.swing.JDialog {
         }
 
 
-      
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-          this.setVisible(false);
+        this.setVisible(false);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
