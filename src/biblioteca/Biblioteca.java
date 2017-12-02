@@ -15,6 +15,7 @@ import javax.swing.JOptionPane;
 public class Biblioteca {
 
     /**
+     *
      * @param args the command line arguments
      */
     public static ArrayList libros = new ArrayList();
@@ -25,7 +26,8 @@ public class Biblioteca {
     public static TipoLibro t2 = new TipoLibro("romance", "libro de romance");
     public static TipoLibro t3 = new TipoLibro("terror", "libro de terror");
 
-    public static void main(String[] args) {
+    //carga inicial de datos
+    static {
         Libro libro1 = new Libro("Luciano  Toledo", "Primer Libro", 1998);
         Libro libro2 = new Libro("Luciano Toledo", "Segundo Libro", 1998);
         libros.add(libro1);
@@ -35,6 +37,9 @@ public class Biblioteca {
         tiposLibro.add(t1);
         tiposLibro.add(t2);
         tiposLibro.add(t3);
+    }
+
+    public static void main(String[] args) {
 
         String mensaje = " *** Biblioteca *** \n Seleccione una opción \n"
                 + "1. Registro de libros \n"
@@ -90,7 +95,7 @@ public class Biblioteca {
                     Ce.setVisible(true);
                     break;
                 case "7":
-                   GuiListarEjemplares le = new GuiListarEjemplares(null, true);
+                    GuiListarEjemplares le = new GuiListarEjemplares(null, true);
                     le.setVisible(true);
 //                    ejeplaresDisponiblesPorLibros();
                     break;
