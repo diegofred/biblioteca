@@ -90,7 +90,9 @@ public class Biblioteca {
                     Ce.setVisible(true);
                     break;
                 case "7":
-                    ejeplaresDisponiblesPorLibros();
+                   GuiListarEjemplares le = new GuiListarEjemplares(null, true);
+                    le.setVisible(true);
+//                    ejeplaresDisponiblesPorLibros();
                     break;
                 case "8":
                     //listarPrestamos();
