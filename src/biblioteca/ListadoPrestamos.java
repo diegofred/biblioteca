@@ -19,7 +19,7 @@ public class ListadoPrestamos extends javax.swing.JDialog {
     public ListadoPrestamos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-
+        setLocationRelativeTo(this);
         prepararInterfaz();
     }
 

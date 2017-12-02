@@ -8,6 +8,7 @@ public class InterfazdeEjemplares extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         preparaInterfaz();
+        setLocationRelativeTo(this);
     }
 
     private void preparaInterfaz() {

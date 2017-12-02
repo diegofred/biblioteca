@@ -9,6 +9,7 @@ public class ConsultaEjemplaresPrestados extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         preparaInterfaz();
+        setLocationRelativeTo(this);
     }
 
     private void preparaInterfaz() {
@@ -128,7 +129,11 @@ public class ConsultaEjemplaresPrestados extends javax.swing.JDialog {
             Persona p2 = (Persona) Biblioteca.personas.get(PersonaSeleccionada);
 
             DefaultTableModel tm = (DefaultTableModel) tbx_Prestamos.getModel();
-
+            int rowCount = tm.getRowCount();
+            for (int i = rowCount - 1; i >= 0; i--) {
+                tm.removeRow(i);
+                
+            }
             //actual data for the table in a 2d array
             int cantidadprestamos = Biblioteca.prestamos.size();
             int cantidadColumnas = tm.getColumnCount();

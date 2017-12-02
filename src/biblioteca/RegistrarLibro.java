@@ -19,7 +19,7 @@ public class RegistrarLibro extends javax.swing.JDialog {
     public RegistrarLibro(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-
+        setLocationRelativeTo(this);
         preparaInterfaz();
     }
 

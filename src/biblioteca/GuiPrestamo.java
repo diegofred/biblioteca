@@ -29,6 +29,7 @@ public class GuiPrestamo extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         prepararInterfaz();
+        setLocationRelativeTo(this);
     }
 
     private void prepararInterfaz() {
