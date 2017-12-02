@@ -19,6 +19,7 @@ public class GUITipoLibro extends javax.swing.JDialog {
     public GUITipoLibro(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setLocationRelativeTo(this);
     }
 
     /**
