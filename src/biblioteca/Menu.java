@@ -5,6 +5,9 @@
  */
 package biblioteca;
 
+import java.awt.Color;
+import java.awt.Cursor;
+
 /**
  *
  * @author Alumno
@@ -39,7 +42,7 @@ public class Menu extends javax.swing.JDialog {
         jMenuBar3 = new javax.swing.JMenuBar();
         jMenu7 = new javax.swing.JMenu();
         jMenu8 = new javax.swing.JMenu();
-        jLabel2 = new javax.swing.JLabel();
+        lblBiblioteca = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         itemAgregarPersona = new javax.swing.JMenuItem();
@@ -81,9 +84,17 @@ public class Menu extends javax.swing.JDialog {
         setTitle("Biblioteca 111mil");
         setResizable(false);
 
-        jLabel2.setFont(new java.awt.Font("Trebuchet MS", 0, 50)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 153, 51));
-        jLabel2.setText("Biblioteca");
+        lblBiblioteca.setFont(new java.awt.Font("Trebuchet MS", 0, 50)); // NOI18N
+        lblBiblioteca.setForeground(new java.awt.Color(0, 153, 51));
+        lblBiblioteca.setText("Biblioteca");
+        lblBiblioteca.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblBibliotecaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblBibliotecaMouseExited(evt);
+            }
+        });
 
         jMenu1.setText("Persona");
 
@@ -185,14 +196,14 @@ public class Menu extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(127, 127, 127)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblBiblioteca, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(148, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(158, Short.MAX_VALUE)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblBiblioteca, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(148, 148, 148))
         );
 
@@ -254,6 +265,17 @@ public class Menu extends javax.swing.JDialog {
         tp.setVisible(true);
     }//GEN-LAST:event_itemAgregarTipoActionPerformed
 
+    private void lblBibliotecaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBibliotecaMouseEntered
+        // TODO add your handling code here:
+        lblBiblioteca.setForeground(Color.RED);
+        lblBiblioteca.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_lblBibliotecaMouseEntered
+
+    private void lblBibliotecaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBibliotecaMouseExited
+         lblBiblioteca.setForeground(Color.GREEN);
+           lblBiblioteca.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+    }//GEN-LAST:event_lblBibliotecaMouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -307,7 +329,6 @@ public class Menu extends javax.swing.JDialog {
     private javax.swing.JMenuItem itemRegistroDevolucion;
     private javax.swing.JMenuItem itemRegistroPrestamo;
     private javax.swing.JMenuItem itemVerPrestamosPersona;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -323,5 +344,6 @@ public class Menu extends javax.swing.JDialog {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JLabel lblBiblioteca;
     // End of variables declaration//GEN-END:variables
 }

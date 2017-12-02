@@ -200,7 +200,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="127" max="-2" attributes="0"/>
-              <Component id="jLabel2" min="-2" pref="241" max="-2" attributes="0"/>
+              <Component id="lblBiblioteca" min="-2" pref="241" max="-2" attributes="0"/>
               <EmptySpace pref="148" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -209,14 +209,14 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace pref="158" max="32767" attributes="0"/>
-              <Component id="jLabel2" min="-2" pref="112" max="-2" attributes="0"/>
+              <Component id="lblBiblioteca" min="-2" pref="112" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="148" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="jLabel2">
+    <Component class="javax.swing.JLabel" name="lblBiblioteca">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Trebuchet MS" size="50" style="0"/>
@@ -226,6 +226,10 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Biblioteca"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblBibliotecaMouseEntered"/>
+        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblBibliotecaMouseExited"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
